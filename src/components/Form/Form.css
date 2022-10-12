@@ -16,9 +16,10 @@ form {
 button {
     width: 130px;
     height: 45px;
-    color: var(--myDarkBlue);
+    color: var(--myBlue-1);
     margin-top: 3em;
-    font-size: 22px;
+    padding-top: 0.1em;
+    font-size: 20px;
     background-color: var(--myWhite);
     border: 1 solid var(--myWhite);
     border-radius: 4px;
