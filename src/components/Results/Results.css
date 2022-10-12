@@ -1,0 +1,21 @@
+.results {
+    width: 40em;
+    height: 8em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    word-wrap: break-word;
+    color: var(--myWhite);
+    padding: 0.5em;
+    margin: auto;
+    margin-bottom: 5em;
+    border-radius: 10px;
+    background-color: var(--myGlassBlue);
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    backdrop-filter: blur(7px);
+}
+.results p {
+    font-size: 17px;
+}

@@ -1,0 +1,48 @@
+form {
+    width: 15em;
+    height: 17em;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 2em 1em;
+    margin: auto;
+    margin-bottom: 2em;
+    border-radius: 10px;
+    background-color: var(--myGlassBlue);
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    backdrop-filter: blur(7px);
+}
+button {
+    width: 130px;
+    height: 45px;
+    color: var(--myDarkBlue);
+    margin-top: 3em;
+    font-size: 22px;
+    background-color: var(--myWhite);
+    border: 1 solid var(--myWhite);
+    border-radius: 4px;
+    transition: .4s;
+}
+button:hover {
+    cursor: pointer;
+    background-color: var(--myBlue-1);
+    color: var(--myWhite);
+    letter-spacing: .5px;
+}
+input {
+    position: relative;
+    width: 15em;
+    height: 3em;
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 0 0.5em;
+    border: var(--myWhite);
+    background-color: var(--myWhite);
+    margin-bottom: 0.5em;
+    color: var(--myDarkBlue);
+}
+input::placeholder {
+    color: var(--myDarkBlue);
+    font-size: 17px;
+}
