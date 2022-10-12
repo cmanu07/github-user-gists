@@ -37,7 +37,17 @@ const Form = () => {
           {
             gists && gists.map(gist => {
                         return <li key={gist.id}>
-                                  <a href={gist.url}>{gist.url}</a>
+                                      <a href={gist.url}>
+                                      {gist.url}
+                                      </a>
+                                      <p>Date of creation: {(gist.created_at).slice(0,10)}</p>
+                                      <p>Language: {}</p>
+                                      <p>Forks: {}</p>
+
+                                      {/* 4. On click, the gist will be loaded in a syntax-highlighted code viewer.
+                                        Asta nush ce inseamna...
+                                      */}
+
                               </li>
             })
           }
