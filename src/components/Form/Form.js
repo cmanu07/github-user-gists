@@ -17,11 +17,10 @@ const Form = () => {
   const showInfo = async () => {
 
     const octokit = new Octokit({
-      auth: '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'
+      auth: ''    // <-- your token here
     })   
     const response = await octokit.request('GET /users/{username}/gists', {
       username: userName,
-      avatar: 'owner/avatar_url'
     });
     setUserToShow(userName)
     setAvatarToShow(response.data.at(0).owner.avatar_url)
@@ -41,20 +40,22 @@ const Form = () => {
         <div className="results">
                       <section>
                         {avatarToShow ? <img src={avatarToShow} alt="missing avatar..."/> : ""}
-                        {userToShow ? <p>UserName: {userToShow}</p> : ""}
-                        {userToShow ? <p>Description: {descrToShow}</p> : ""}
+                        {userToShow ? <p><em>UserName:</em> {userToShow}</p> : ""}
+                        {userToShow ? <p><em>Description:</em> {descrToShow}</p> : ""}
                       </section>
-          <ol>{userToShow ? <span>List of public gists:</span> : ""}
+          <ol>{userToShow ? <span className='ol-list'>List of public gists:</span> : ""}
           {
             gists && gists.map(gist => {
-                        return <li key={gist.id}>
-                                      <a href={gist.url} target="_blank" rel="noreferrer">
-                                      {gist.url}
+                          const {id, created_at, url} = gist;
+                          // aici nu am reusit sa obtin mai multe info si sa le mapez mai jos
+                        return <li key={id}>
+                                      <a href={url} target="_blank" rel="noreferrer">
+                                      {url}
                                       </a>
-                                      <p>Date of creation: {(gist.created_at).slice(0,10)}</p>
-                                      <p>Language: <span style={{color: '#FF9677'}}>{gist.files.language}</span></p>
-                                      <p>Forks: {}</p>
-                                      <p>Users who fork: </p>
+                                      <p><em>Date of creation:</em> {(created_at).slice(0,10)}</p>
+                                      <p><em>Programming language:</em> <span style={{color: '#FF9677'}}>{}</span></p>
+                                      <p><em>Forks:</em> {}</p>
+                                      <p><em>Users who fork:</em> {}</p>
                               </li>
             })
           }
