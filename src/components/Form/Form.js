@@ -1,22 +1,33 @@
 import React, { useState } from 'react'
 
 import './Form.css'
-import '../Results/Results.css'
+
+import { Octokit } from "@octokit/core"
 
 
 const Form = () => {
 
   const [userName, setUserName] = useState(() => "")
+  const [userToShow, setUserToShow] = useState(() => "")
+  const [avatarToShow, setAvatarToShow] = useState(() => "")
+  const [descrToShow, setDescrToShow] = useState(() => "")
 
   const [gists, setGists] = useState(() => null)
 
-  const showInfo = () => {
-    const newUser = {userName}
-    fetch(`https://api.github.com/users/${newUser.userName}/gists`, {
-      method: 'GET',
-    }).then((response) => response.json())
-    .then((users) => setGists(users))
-    .catch((error) => console.log(error))
+  const showInfo = async () => {
+
+    const octokit = new Octokit({
+      auth: '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'
+    })   
+    const response = await octokit.request('GET /users/{username}/gists', {
+      username: userName,
+      avatar: 'owner/avatar_url'
+    });
+    setUserToShow(userName)
+    setAvatarToShow(response.data.at(0).owner.avatar_url)
+    setDescrToShow(response.data.at(0).description)
+    setGists(response.data)
+    
   }
 
   return (<>
@@ -29,11 +40,11 @@ const Form = () => {
         </form>
         <div className="results">
                       <section>
-                        <img src={""} alt="missing avatar..."/>
-                        <p>UserName: </p>
-                        <p>Description: </p>
+                        {avatarToShow ? <img src={avatarToShow} alt="missing avatar..."/> : ""}
+                        {userToShow ? <p>UserName: {userToShow}</p> : ""}
+                        {descrToShow ? <p>Description: {descrToShow}</p> : ""}
                       </section>
-          <ol>List of public gists:
+          <ol>{userName ? <span>List of public gists:</span> : ""}
           {
             gists && gists.map(gist => {
                         return <li key={gist.id}>
@@ -41,13 +52,9 @@ const Form = () => {
                                       {gist.url}
                                       </a>
                                       <p>Date of creation: {(gist.created_at).slice(0,10)}</p>
-                                      <p>Language: {}</p>
+                                      <p>Language: <span style={{color: '#FF9677'}}>{gist.files.language}</span></p>
                                       <p>Forks: {}</p>
-
-                                      {/* 4. On click, the gist will be loaded in a syntax-highlighted code viewer.
-                                        Asta nush ce inseamna...
-                                      */}
-
+                                      <p>Users who fork: </p>
                               </li>
             })
           }

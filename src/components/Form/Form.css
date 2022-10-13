@@ -13,6 +13,32 @@ form {
     overflow: hidden;
     backdrop-filter: blur(7px);
 }
+.results {
+    width: 55em;
+    height: 100em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    word-wrap: break-word;
+    color: var(--myWhite);
+    padding: 0.5em 3em;
+    margin: auto;
+    margin-bottom: 5em;
+    border-radius: 10px;
+    background-color: var(--myGlassBlue);
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    backdrop-filter: blur(7px);
+}
+.results p {
+    font-size: 17px;
+}
+img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
 button {
     width: 130px;
     height: 45px;
@@ -46,4 +72,7 @@ input {
 input::placeholder {
     color: var(--myDarkBlue);
     font-size: 17px;
+}
+section {
+    margin-bottom: 1.5em;
 }

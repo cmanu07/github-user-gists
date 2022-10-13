@@ -1,10 +1,11 @@
-// import { Octokit } from "@octokit/core"
 
+// const BASE_URL = "https://api.github.com/users";
 
-// export const octokit = new Octokit ({
-//   auth: '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'
-// })
-
-// await octokit.request('GET /users/{username}/gists', {
-//   username: 'cmanu07'
-// })
+// export const showInfo = (userN, updateStateF) => {
+//     const newUser = {userN}
+//     fetch(`${BASE_URL}/${newUser.userN}/gists`, {
+//       method: 'GET',
+//     }).then((response) => response.json())
+//     .then((users) => updateStateF(users))
+//     .catch((error) => console.log(error))
+//   }
