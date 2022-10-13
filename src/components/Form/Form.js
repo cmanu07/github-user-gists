@@ -17,7 +17,7 @@ const Form = () => {
   const showInfo = async () => {
 
     const octokit = new Octokit({
-      auth: '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'
+      auth: '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'
     })   
     const response = await octokit.request('GET /users/{username}/gists', {
       username: userName,
@@ -42,13 +42,13 @@ const Form = () => {
                       <section>
                         {avatarToShow ? <img src={avatarToShow} alt="missing avatar..."/> : ""}
                         {userToShow ? <p>UserName: {userToShow}</p> : ""}
-                        {descrToShow ? <p>Description: {descrToShow}</p> : ""}
+                        {userToShow ? <p>Description: {descrToShow}</p> : ""}
                       </section>
-          <ol>{userName ? <span>List of public gists:</span> : ""}
+          <ol>{userToShow ? <span>List of public gists:</span> : ""}
           {
             gists && gists.map(gist => {
                         return <li key={gist.id}>
-                                      <a href={gist.url}>
+                                      <a href={gist.url} target="_blank" rel="noreferrer">
                                       {gist.url}
                                       </a>
                                       <p>Date of creation: {(gist.created_at).slice(0,10)}</p>
